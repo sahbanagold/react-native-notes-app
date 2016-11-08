@@ -20,8 +20,10 @@ export default class SearchBar extends Component {
             placeholder = 'search a notes...'
             onFocus = {this.props.onFocus}
             style = {styles.SearchBarInput}/>
-            <ActivityIndicator animating = {this.props.isLoading}
-            style = {styles.spinner}/> < /View >
+
+  
+
+        </ View >
         )
     }
 }
@@ -34,6 +36,9 @@ var styles = StyleSheet.create({
         alignItems: 'center'
     },
     SearchBarInput: {
-
+      fontSize: 24
+    },
+    spinner:{
+      width: 30
     }
 })
