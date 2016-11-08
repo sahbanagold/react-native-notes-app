@@ -10,12 +10,11 @@ export default class NoNotes extends Component {
             text = `No results for "${this.props.filter}"`
         } else if (!this.props.isLoading) {
             text = 'No Notes found'
-        }
-        console.log('texxxxxxt', text);
+        }      
         return (
           <View style = {[styles.container, styles.centerText]}>
             <Text style ={styles.noNotesText}> {text} < /Text>
-            < /View>
+            </ View>
         )
     }
 }
@@ -26,9 +25,11 @@ var styles = StyleSheet.create({
     },
     centerText: {
         alignItems: 'center'
+
     },
     noNotesText: {
         marginTop: 80,
-        color: '#888'
+        color: '#888',
+        fontSize: 40
     }
 })
