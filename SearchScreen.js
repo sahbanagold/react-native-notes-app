@@ -27,7 +27,8 @@ export default class SearchScreen extends Component {
     }
     _urlForQueryAndPage(query) {
         if (query) {
-            return `${configNote.host}/search/${query}`
+          console.log(configNote.host,"hostttttttttttttt");
+            return `${configNote.host}`
         } else {
             return `${configNote.host}`
         }
@@ -42,7 +43,8 @@ export default class SearchScreen extends Component {
         this.setState({
             filter: query
         })
-        fetch(this._urlForQueryAndPage(query))
+        let testurl = this._urlForQueryAndPage(query)
+        fetch(testurl)
             .then((response) => {
                 return response.json()
             })
@@ -57,13 +59,16 @@ export default class SearchScreen extends Component {
                 }
                 this.setState({
                     isLoading: false,
-                    dataSource: this.getDataSource(notes)
+                    dataSource: this.getDataSource(notes.data.notes)
                 })
+
+                console.log(notes.data.notes);
             })
     }
     onSearchChange(event: Object) {
         let filter = event.nativeEvent.text.toLowerCase()
 
+        console.log('execetu 11111111111111111111111');
         this.searchNotes(filter)
     }
     selectNote(note: Object) {
@@ -93,6 +98,7 @@ export default class SearchScreen extends Component {
     renderRow(note: Object, sectionID: number | string,
         rowID: number | string,
         highlightRowFunc: (sectionID: ?number | string, rowID : ?number | string) => void,) {
+          console.log(note,"noteeeeeeeeeeeeeeeeeeeeeeeeeeee");
         return (<NoteCell key = {note.id}
         onSelect = {() => this.selectNote(note)}
         onHighlight = {() => highlightRowFunc(sectionID, rowID)}
@@ -100,7 +106,9 @@ export default class SearchScreen extends Component {
     }
 
     render() {
-        let content = this.state.dataSource.getRowCount() === 0 ? < NoNotes filter = {this.state.filter} isLoading = {this.state.isLoading}/> :
+
+        let content = this.state.dataSource.getRowCount() === 0 ? <NoNotes filter = {this.state.filter} isLoading = {this.state.isLoading}/>
+            :
             <ListView ref = 'listview'
             renderSeparator = { this.renderSeparator }
             dataSource = {this.state.dataSource}
@@ -109,8 +117,7 @@ export default class SearchScreen extends Component {
             keyboardDismissMode = 'on-drag'
             keyboardShouldPersistTaps = {true}
             showsVerticalScrollIndicator = {false} />
-
-
+          console.log(this.state.dataSource,"this dataSource");
         return ( <View style = {
                 styles.container
             } >
@@ -118,9 +125,9 @@ export default class SearchScreen extends Component {
             isLoading = {this.state.isLoading}
             onFocus = {() => this.refs.listview && this.refs.listview.getScrollResponder().scrollTo({x: 0,y: 0})} />
             <View style = { styles.separator } / >
-            <NoNotes filter = {this.state.filter}
-            isLoading = {this.state.isLoading} />
-            < /View>
+          {content}
+
+            </ View>
         )
     }
 }
