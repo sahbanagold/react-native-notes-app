@@ -24,11 +24,11 @@ export default class NoteCell extends Component {
             style = {styles.cellImage}/>
             <View style = {styles.textContainer}>
             <Text style = {styles.noteTitle} > {this.props.note.title}
-            < /Text>
-            < /View >
-            < /View >
-            < /TouchableHighlight >
-            < /View >
+            </ Text>
+            </ View >
+            </ View >
+            </ TouchableHighlight >
+            </ View >
         )
     }
 }
