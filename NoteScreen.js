@@ -17,6 +17,7 @@ export default class NoteScreen extends Component {
     }
     render() {
         return (
+          <TouchableHighlight>
             <ScrollView contentContainerStyle = {
                 styles.contentContainer
             } >
@@ -27,13 +28,14 @@ export default class NoteScreen extends Component {
             style = {styles.detailsImage}/>
             <View >
             <Text style = {styles.rightPane} > {this.props.note.title}
-            < /Text >
-            < /View >
+            </ Text >
+            </ View >
             <View style = {styles.separator}/>
             <Text > {this.props.note.content} < /Text>
             <View style = {styles.separator}/>
-            < /View >
-            < /ScrollView >
+            </ View >
+            </ ScrollView >
+            </ TouchableHighlight>
         )
     }
 }
